@@ -44,6 +44,7 @@ class BlockActivity : AppCompatActivity() {
 
             if(inputText.isNotEmpty() && keyText.isNotEmpty()){
                 try {
+                    secretKey = generateAESKeyFromString(keyText)
                     val decryptedText = decryptAES(inputText, secretKey)
                     binding.decryptedText.text = getString(R.string.hasil_dekripsi)
                     binding.decryptedText.append("\n$decryptedText")
