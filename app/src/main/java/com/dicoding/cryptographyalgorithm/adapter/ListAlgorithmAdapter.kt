@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.cryptographyalgorithm.R
-import com.dicoding.cryptographyalgorithm.activity.MainActivity
 import com.dicoding.cryptographyalgorithm.data_class.CryptoData
 
 class ListAlgorithmAdapter(private val listAlgorithm: ArrayList<CryptoData>) : RecyclerView.Adapter<ListAlgorithmAdapter.ListViewHolder>() {
