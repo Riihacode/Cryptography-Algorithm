@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Mengatur warna latar belakang -->
+    <solid android:color="#FFFFFF" /> <!-- Putih -->
+
+    <!-- Mengatur sudut membulat -->
+    <corners android:radius="12dp" /> <!-- Membuat sudut membulat -->
+
+    <!-- Mengatur garis tepi -->
+    <stroke android:width="2dp" android:color="#CCCCCC" /> <!-- Warna garis abu-abu -->
+
+</shape>

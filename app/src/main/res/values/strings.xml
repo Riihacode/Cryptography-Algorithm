@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Cryptography Algorithm</string>
+    <string name="masukkan_teks">Masukkan teks</string>
+    <string name="masukkan_shift">Masukkan Shift</string>
+    <string name="dekripsi">Dekripsi</string>
+    <string name="hasil_enkripsi">Hasil Enkripsi:</string>
+    <string name="enkripsi">Enkripsi</string>
+    <string name="hasil_dekripsi">Hasil Dekripsi:</string>
+    <string name="rail_fence_algorithm">Rail Fence Algorithm</string>
+    <string name="masukkan_key">Masukkan Key</string>
+    <string name="invalid_input"><![CDATA[Invalid input. Ensure text is not empty and rails > 1.]]></string>
+    <string name="show_decrypted_text">Show Decrypted Text</string>
+    <string name="decrypted_text_hidden">Decrypted Text Hidden</string>
+    <string name="block_cipher_algorithm">Block Cipher Algorithm</string>
+    <string name="caesar_cipher_algorithm">Caesar Cipher Algorithm</string>
+    <string name="stream_cipher_algorithm">Stream Cipher Algorithm</string>
+    <string name="powered_by">Powered by Kelompok 9</string>
+    <string name="splash_screen_section">Splash Screen</string>
+    <string name="welcome">Welcome</string>
+    <string name="algorithm_name">Algorithm Name</string>
+    <string name="algorithm_description">Algorithm Description</string>
+    <string name="input_both_please"><![CDATA[Please Input Both Text & Key]]></string>
+    <string name="cryptography">CRYPTOGRAPHY</string>
+    <string name="welcome_to">Welcome to</string>
+
+    <string-array name="data_name">
+        <item>Caesar Cipher</item>
+        <item>Rail Fence Cipher</item>
+        <item>Stream Cipher (RC4)</item>
+        <item>Block Cipher (AES)</item>
+        <item>Super Enkripsi</item>
+
+    </string-array>
+
+    <string-array name="data_description">
+        <item>Caesar Cipher adalah menggeser urutan huruf alfabet ke kiri atau ke kanan dengan jumlah geseran tertentu.</item>
+        <item>Rail Fence Cipher (RFC) adalah algoritma klasik model algoritma transposisi, Cipher (Algoritma) ini hampir mirip sistem kerjanya dengan Zig-zag Cipher. Rail Fence Cipher menggunakan teknik perubahan posisi berdasarkan tingkatan, dimana nilai tingkatan disebut kunci enkripsi dan dekripsi dalam algoritma ini.</item>
+        <item>RC4 bekerja dengan menciptakan sebuah stream kunci pseudo-random yang kemudian di-XOR-kan (bitwise exclusive OR) dengan data yang akan dienkripsi atau didekripsi.</item>
+        <item>AES adalah algoritma block cipher, yang artinya bekerja dengan membagi data ke dalam blok-blok yang berukuran tetap (128 bit untuk AES) dan kemudian mengenkripsi setiap blok secara terpisah.</item>
+        <item>Super Enkripsi gabungan dari Caesar, Rail Fence, RC4, dan AES Cipher</item>
+    </string-array>
+
+    <array name="data_photo">
+        <item>@drawable/caeshar_cipher</item>
+        <item>@drawable/rail_fence</item>
+        <item>@drawable/stream_cipher_rc4</item>
+        <item>@drawable/aes</item>
+        <item>@drawable/super_enkripsi</item>
+    </array>
+</resources>
