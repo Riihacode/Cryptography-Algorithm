@@ -1,80 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".activity.CaesarActivity">
 
-    <!-- EditText untuk memasukkan teks yang akan dienkripsi/dekripsi -->
-    <EditText
-        android:id="@+id/inputText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/masukkan_teks"
-        android:inputType="textMultiLine"
-        android:minLines="3"
-        android:gravity="top"
-        android:padding="10dp"
-        android:background="@drawable/edittext_background"
-        android:textColorHint="@android:color/darker_gray"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- EditText untuk memasukkan kunci enkripsi -->
-    <EditText
-        android:id="@+id/inputKey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/masukkan_key"
-        android:inputType="number"
-        android:padding="10dp"
-        android:background="@drawable/edittext_background"
-        android:textColorHint="@android:color/darker_gray"
-        android:layout_marginTop="8dp"/>
+        <!-- EditText untuk memasukkan teks yang akan dienkripsi/dekripsi -->
+        <EditText
+            android:id="@+id/inputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/masukkan_teks"
+            android:autofillHints="@string/masukkan_teks"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:gravity="top"
+            android:padding="10dp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="@android:color/darker_gray"/>
 
-    <!-- Tombol untuk melakukan enkripsi -->
-    <Button
-        android:id="@+id/encryptButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enkripsi"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/purple_500"
-        android:textColor="@android:color/white"/>
+        <!-- EditText untuk memasukkan kunci enkripsi -->
+        <EditText
+            android:id="@+id/inputKey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="@string/masukkan_key"
+            android:hint="@string/masukkan_key"
+            android:inputType="number"
+            android:padding="10dp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="@android:color/darker_gray"
+            android:layout_marginTop="8dp"/>
 
-    <!-- TextView untuk menampilkan hasil enkripsi -->
-    <TextView
-        android:id="@+id/outputText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hasil_enkripsi"
-        android:textStyle="bold"
-        android:padding="10dp"
-        android:background="@drawable/textview_background"
-        android:gravity="center_vertical"
-        android:layout_marginTop="16dp"/>
+        <!-- Tombol untuk melakukan enkripsi -->
+        <Button
+            android:id="@+id/encryptButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enkripsi"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@android:color/white"/>
 
-    <!-- Tombol untuk melakukan dekripsi -->
-    <Button
-        android:id="@+id/decryptButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dekripsi"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/purple_500"
-        android:textColor="@android:color/white"/>
+        <!-- TextView untuk menampilkan hasil enkripsi -->
+        <TextView
+            android:id="@+id/encryptedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hasil_enkripsi"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:background="@drawable/textview_background"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"/>
 
-    <!-- TextView untuk menampilkan hasil dekripsi -->
-    <TextView
-        android:id="@+id/decryptedText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hasil_dekripsi"
-        android:textStyle="bold"
-        android:padding="10dp"
-        android:background="@drawable/textview_background"
-        android:gravity="center_vertical"
-        android:layout_marginTop="16dp"/>
-</LinearLayout>
+        <!-- Tombol untuk melakukan dekripsi -->
+        <Button
+            android:id="@+id/decryptButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dekripsi"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@android:color/white"/>
+
+        <!-- TextView untuk menampilkan hasil dekripsi -->
+        <TextView
+            android:id="@+id/decryptedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hasil_dekripsi"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:background="@drawable/textview_background"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

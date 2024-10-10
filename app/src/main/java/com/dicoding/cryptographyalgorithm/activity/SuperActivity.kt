@@ -30,12 +30,12 @@ class SuperActivity : AppCompatActivity() {
                 try {
                     val encryptedText =
                         superEncrypt(inputText, caesarShift, railFenceRails, rc4Key, aesKeyString)
-                    binding.outputText.text = "Encrypted: $encryptedText"
+                    binding.encryptedText.text = "Encrypted: $encryptedText"
                 } catch (e: Exception) {
-                    binding.outputText.text = "Error: ${e.message}"
+                    binding.encryptedText.text = "Error: ${e.message}"
                 }
             } else {
-                binding.outputText.text = getString(R.string.input_both_please)
+                binding.encryptedText.text = getString(R.string.input_both_please)
             }
         }
 
@@ -75,8 +75,8 @@ class SuperActivity : AppCompatActivity() {
         aesKeyString: String
     ): String {
         val caesarEncrypted = caesarCipher(inputText, caesarShift)
-        val railFenceEncrypted = encrypt(caesarEncrypted, railFenceRails)
-        val rc4Encrypted = rc4Encrypt(railFenceEncrypted.toByteArray(), rc4Key)
+        val railFenceEncrypted = encryptRailFence(caesarEncrypted, railFenceRails)
+        val rc4Encrypted = encryptRC4(railFenceEncrypted.toByteArray(), rc4Key)
         val aesKey = generateAESKeyFromString(aesKeyString)
         return encryptAES(rc4Encrypted, aesKey)
     }
@@ -90,8 +90,8 @@ class SuperActivity : AppCompatActivity() {
     ): String {
         val aesKey = generateAESKeyFromString(aesKeyString)
         val rc4Encrypted = decryptAES(encryptedText, aesKey)
-        val rc4Decrypted = rc4Decrypt(Base64.decode(rc4Encrypted, Base64.DEFAULT), rc4Key)
-        val railFenceDecrypted = decrypt(rc4Decrypted, railFenceRails)
+        val rc4Decrypted = decryptRC4(Base64.decode(rc4Encrypted, Base64.DEFAULT), rc4Key)
+        val railFenceDecrypted = decryptRailFence(rc4Decrypted, railFenceRails)
         return caesarCipher(railFenceDecrypted, -caesarShift)
     }
 
@@ -112,7 +112,7 @@ class SuperActivity : AppCompatActivity() {
         return result.toString()
     }
 
-    private fun encrypt(plainText: String, rails: Int): String {
+    private fun encryptRailFence(plainText: String, rails: Int): String {
         if (rails <= 1) return plainText
 
         val fence = Array(rails) { StringBuilder() }
@@ -133,7 +133,7 @@ class SuperActivity : AppCompatActivity() {
         return fence.joinToString("") { it.toString() }
     }
 
-    private fun decrypt(cipherText: String, rails: Int): String {
+    private fun decryptRailFence(cipherText: String, rails: Int): String {
         if (rails <= 1) return cipherText
 
         val length = cipherText.length
@@ -178,7 +178,7 @@ class SuperActivity : AppCompatActivity() {
         return decryptedText.toString()
     }
 
-    private fun rc4Encrypt(inputText: ByteArray, key: ByteArray): String {
+    private fun encryptRC4(inputText: ByteArray, key: ByteArray): String {
         val s = ByteArray(256)
         var j = 0
 
@@ -207,7 +207,7 @@ class SuperActivity : AppCompatActivity() {
         return Base64.encodeToString(output, Base64.DEFAULT)
     }
 
-    private fun rc4Decrypt(inputText: ByteArray, key: ByteArray): String {
+    private fun decryptRC4(inputText: ByteArray, key: ByteArray): String {
         val s = ByteArray(256)
         var j = 0
 

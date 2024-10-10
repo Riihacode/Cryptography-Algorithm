@@ -15,40 +15,45 @@ class StreamActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.encryptButton.setOnClickListener {
-            val inputText = binding.inputText.text.toString()
+            val plainText = binding.inputText.text.toString()
             val key = binding.inputKey.text.toString()
 
-            // Validasi apakah input text atau key kosong
-            if (inputText.isEmpty()) {
-                binding.outputText.text = "Error: Input text tidak boleh kosong"
-                return@setOnClickListener
-            }
-            if (key.isEmpty()) {
-                binding.outputText.text = "Error: Key tidak boleh kosong"
-                return@setOnClickListener
-            }
+            try {
+                // Validasi apakah input text atau key kosong
+                if (plainText.isEmpty()) {
+                    binding.encryptedText.text = getString(R.string.text_cannot_be_empty)
+                    return@setOnClickListener
+                }
+                if (key.isEmpty()) {
+                    binding.encryptedText.text = getString(R.string.key_cannot_be_empty)
+                    return@setOnClickListener
+                }
 
-            val encryptedText = rc4Encrypt(inputText.toByteArray(), key.toByteArray())
-            binding.outputText.text = getString(R.string.hasil_enkripsi)
-            binding.outputText.append("\n$encryptedText")
+                val encryptedText = encryptRC4(plainText.toByteArray(), key.toByteArray())
+                binding.encryptedText.text = getString(R.string.hasil_enkripsi)
+                binding.encryptedText.append("\n$encryptedText")
+            } catch (e: Exception){
+                e.printStackTrace()
+                binding.encryptedText.text = "Error: ${e.message}"
+            }
         }
 
         binding.decryptButton.setOnClickListener {
             try {
-                val inputText = binding.inputText.text.toString()
+                val cipherText = binding.inputText.text.toString()
                 val key = binding.inputKey.text.toString()
 
                 // Validasi apakah input text atau key kosong
-                if (inputText.isEmpty()) {
-                    binding.decryptedText.text = "Error: Input text tidak boleh kosong"
+                if (cipherText.isEmpty()) {
+                    binding.decryptedText.text = getString(R.string.text_cannot_be_empty)
                     return@setOnClickListener
                 }
                 if (key.isEmpty()) {
-                    binding.decryptedText.text = "Error: Key tidak boleh kosong"
+                    binding.decryptedText.text = getString(R.string.key_cannot_be_empty)
                     return@setOnClickListener
                 }
 
-                val decryptedText = rc4Decrypt(Base64.decode(inputText, Base64.DEFAULT), key.toByteArray())
+                val decryptedText = decryptRC4(Base64.decode(cipherText, Base64.DEFAULT), key.toByteArray())
                 binding.decryptedText.text = getString(R.string.hasil_dekripsi)
                 binding.decryptedText.append("\n$decryptedText")
             } catch (e: Exception) {
@@ -56,10 +61,9 @@ class StreamActivity : AppCompatActivity() {
                 binding.decryptedText.text = "Error: ${e.message}"
             }
         }
-
     }
 
-    private fun rc4Encrypt(inputText: ByteArray, key: ByteArray): String {
+    private fun encryptRC4(inputText: ByteArray, key: ByteArray): String {
         val s = ByteArray(256)
         var j = 0
 
@@ -90,7 +94,7 @@ class StreamActivity : AppCompatActivity() {
         return Base64.encodeToString(output, Base64.DEFAULT)
     }
 
-    private fun rc4Decrypt(inputText: ByteArray, key: ByteArray): String{
+    private fun decryptRC4(inputText: ByteArray, key: ByteArray): String{
         val s = ByteArray(256)
         var j = 0
 

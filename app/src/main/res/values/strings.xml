@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Cryptography Algorithm</string>
+    <string name="app_name2">Cryptography</string>
     <string name="masukkan_teks">Masukkan teks</string>
     <string name="masukkan_shift">Masukkan Shift</string>
     <string name="dekripsi">Dekripsi</string>
@@ -8,7 +9,8 @@
     <string name="hasil_dekripsi">Hasil Dekripsi:</string>
     <string name="rail_fence_algorithm">Rail Fence Algorithm</string>
     <string name="masukkan_key">Masukkan Key</string>
-    <string name="invalid_input"><![CDATA[Invalid input. Ensure text is not empty and rails > 1.]]></string>
+    <string name="invalid_input"><![CDATA[Invalid input. Ensure text is not empty, rails > 1.]]></string>
+    <string name="invalid_input_key"><![CDATA[Invalid key input. Ensure the key is not 0 or 1 and not more than 2.147.483.647 (int data type). Key recommendation is under 100 due to memory limit.]]></string>
     <string name="show_decrypted_text">Show Decrypted Text</string>
     <string name="decrypted_text_hidden">Decrypted Text Hidden</string>
     <string name="block_cipher_algorithm">Block Cipher Algorithm</string>
@@ -22,6 +24,9 @@
     <string name="input_both_please"><![CDATA[Please Input Both Text & Key]]></string>
     <string name="cryptography">CRYPTOGRAPHY</string>
     <string name="welcome_to">Welcome to</string>
+    <string name="out_of_memory_range">Out of memory range</string>
+    <string name="text_cannot_be_empty">Text cannot be empty</string>
+    <string name="key_cannot_be_empty">Key cannot be empty</string>
 
     <string-array name="data_name">
         <item>Caesar Cipher</item>

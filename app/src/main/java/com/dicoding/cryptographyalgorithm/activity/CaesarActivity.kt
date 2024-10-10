@@ -17,8 +17,8 @@ class CaesarActivity : AppCompatActivity() {
             val text = binding.inputText.text.toString()
             val shift = binding.inputKey.text.toString().toIntOrNull() ?: 0
             val encrypted = caesarCipher(text, shift)
-            binding.outputText.text = getString(R.string.hasil_enkripsi)
-            binding.outputText.append("\n$encrypted")
+            binding.encryptedText.text = getString(R.string.hasil_enkripsi)
+            binding.encryptedText.append("\n$encrypted")
         }
 
         binding.decryptButton.setOnClickListener{
