@@ -1,7 +1,12 @@
 package com.dicoding.cryptographyalgorithm.activity
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Context.*
 import android.os.Bundle
 import android.util.Base64
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.cryptographyalgorithm.R
 import com.dicoding.cryptographyalgorithm.databinding.ActivitySuperBinding
@@ -30,7 +35,8 @@ class SuperActivity : AppCompatActivity() {
                 try {
                     val encryptedText =
                         superEncrypt(inputText, caesarShift, railFenceRails, rc4Key, aesKeyString)
-                    binding.encryptedText.text = "Encrypted: $encryptedText"
+                    binding.encryptedText.text = "Hasil Enkripsi: "
+                    binding.encryptedText.append("\n$encryptedText")
                 } catch (e: Exception) {
                     binding.encryptedText.text = "Error: ${e.message}"
                 }
@@ -57,13 +63,24 @@ class SuperActivity : AppCompatActivity() {
                             rc4Key,
                             aesKeyString
                         )
-                    binding.decryptedText.text = "Decrypted: $decryptedText"
+                    binding.decryptedText.text = "Hasil Dekripsi: "
+                    binding.decryptedText.append("\n$decryptedText")
                 } catch (e: Exception) {
                     binding.decryptedText.text = "Error: ${e.message}"
                 }
             } else {
                 binding.decryptedText.text = getString(R.string.input_both_please)
             }
+        }
+
+        // Menambahkan listener untuk menyalin teks hasil enkripsi
+        binding.encryptedText.setOnClickListener {
+            copyToClipboard(binding.encryptedText.text.toString(), "Hasil Enkripsi")
+        }
+
+        // Menambahkan listener untuk menyalin teks hasil dekripsi
+        binding.decryptedText.setOnClickListener {
+            copyToClipboard(binding.decryptedText.text.toString(), "Hasil Dekripsi")
         }
     }
 
@@ -266,5 +283,15 @@ class SuperActivity : AppCompatActivity() {
         val decodedBytes = Base64.decode(inputText, Base64.DEFAULT)
         val decryptedBytes = cipher.doFinal(decodedBytes)
         return String(decryptedBytes, Charsets.UTF_8)
+    }
+
+    // Fungsi untuk menyalin teks ke clipboard
+    private fun copyToClipboard(text: String, label: String) {
+        val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(label, text)
+        clipboard.setPrimaryClip(clip)
+
+        // Tampilkan toast untuk memberi tahu pengguna bahwa teks telah disalin
+        Toast.makeText(this, "$label disalin ke clipboard", Toast.LENGTH_SHORT).show()
     }
 }

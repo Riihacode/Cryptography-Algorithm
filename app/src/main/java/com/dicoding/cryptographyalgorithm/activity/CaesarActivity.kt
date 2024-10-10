@@ -1,6 +1,10 @@
 package com.dicoding.cryptographyalgorithm.activity
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.cryptographyalgorithm.R
 import com.dicoding.cryptographyalgorithm.databinding.ActivityCaesarBinding
@@ -28,6 +32,16 @@ class CaesarActivity : AppCompatActivity() {
             binding.decryptedText.text = getString(R.string.hasil_dekripsi)
             binding.decryptedText.append("\n$decrypted")
         }
+
+        // Menambahkan listener untuk menyalin teks hasil enkripsi
+        binding.encryptedText.setOnClickListener {
+            copyToClipboard(binding.encryptedText.text.toString(), "Hasil Enkripsi")
+        }
+
+        // Menambahkan listener untuk menyalin teks hasil dekripsi
+        binding.decryptedText.setOnClickListener {
+            copyToClipboard(binding.decryptedText.text.toString(), "Hasil Dekripsi")
+        }
     }
 
     private fun caesarCipher(text: String, shift: Int): String {
@@ -45,5 +59,15 @@ class CaesarActivity : AppCompatActivity() {
         }
 
         return result.toString()
+    }
+
+    // Fungsi untuk menyalin teks ke clipboard
+    private fun copyToClipboard(text: String, label: String) {
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(label, text)
+        clipboard.setPrimaryClip(clip)
+
+        // Tampilkan toast untuk memberi tahu pengguna bahwa teks telah disalin
+        Toast.makeText(this, "$label disalin ke clipboard", Toast.LENGTH_SHORT).show()
     }
 }

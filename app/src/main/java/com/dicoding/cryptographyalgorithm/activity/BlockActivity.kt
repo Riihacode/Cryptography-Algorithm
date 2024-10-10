@@ -1,7 +1,12 @@
 package com.dicoding.cryptographyalgorithm.activity
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Context.*
 import android.os.Bundle
 import android.util.Base64
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.cryptographyalgorithm.R
 import com.dicoding.cryptographyalgorithm.databinding.ActivityBlockBinding
@@ -55,6 +60,16 @@ class BlockActivity : AppCompatActivity() {
                 binding.decryptedText.text = getString(R.string.hasil_dekripsi)
             }
         }
+
+        // Menambahkan listener untuk menyalin teks hasil enkripsi
+        binding.encryptedText.setOnClickListener {
+            copyToClipboard(binding.encryptedText.text.toString(), "Hasil Enkripsi")
+        }
+
+        // Menambahkan listener untuk menyalin teks hasil dekripsi
+        binding.decryptedText.setOnClickListener {
+            copyToClipboard(binding.decryptedText.text.toString(), "Hasil Dekripsi")
+        }
     }
 
     // Fungsi untuk mengubah string menjadi array byte dan memastikan panjang kunci sesuai dengan standar AES yaitu 128-bit, 192-bit, atau 256-bit
@@ -86,5 +101,15 @@ class BlockActivity : AppCompatActivity() {
         val decodedBytes = Base64.decode(inputText, Base64.DEFAULT) // Base64 digunakan untuk mengubah data biner (byte array) menjadi format teks yang dapat dibaca oleh manusia
         val decryptedBytes = cipher.doFinal(decodedBytes)
         return String(decryptedBytes, Charsets.UTF_8)
+    }
+
+    // Fungsi untuk menyalin teks ke clipboard
+    private fun copyToClipboard(text: String, label: String) {
+        val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(label, text)
+        clipboard.setPrimaryClip(clip)
+
+        // Tampilkan toast untuk memberi tahu pengguna bahwa teks telah disalin
+        Toast.makeText(this, "$label disalin ke clipboard", Toast.LENGTH_SHORT).show()
     }
 }

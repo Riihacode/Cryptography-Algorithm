@@ -1,6 +1,11 @@
 package com.dicoding.cryptographyalgorithm.activity
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Context.*
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.cryptographyalgorithm.R
 import com.dicoding.cryptographyalgorithm.databinding.ActivityRailFenceBinding
@@ -81,6 +86,16 @@ class RailFenceActivity : AppCompatActivity() {
                 binding.encryptedText.text = "Unexpected error: ${e.message} (key recommendation is under 100 due to memory limit)."
             }
         }
+
+        // Menambahkan listener untuk menyalin teks hasil enkripsi
+        binding.encryptedText.setOnClickListener {
+            copyToClipboard(binding.encryptedText.text.toString(), "Hasil Enkripsi")
+        }
+
+        // Menambahkan listener untuk menyalin teks hasil dekripsi
+        binding.decryptedText.setOnClickListener {
+            copyToClipboard(binding.decryptedText.text.toString(), "Hasil Dekripsi")
+        }
     }
 
     private fun encryptRailFence(plainText: String, rails: Int): String {
@@ -150,5 +165,15 @@ class RailFenceActivity : AppCompatActivity() {
         }
 
         return decryptedText.toString()
+    }
+
+    // Fungsi untuk menyalin teks ke clipboard
+    private fun copyToClipboard(text: String, label: String) {
+        val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(label, text)
+        clipboard.setPrimaryClip(clip)
+
+        // Tampilkan toast untuk memberi tahu pengguna bahwa teks telah disalin
+        Toast.makeText(this, "$label disalin ke clipboard", Toast.LENGTH_SHORT).show()
     }
 }
