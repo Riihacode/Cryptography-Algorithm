@@ -1,4 +1,4 @@
-package com.dicoding.cryptographyalgorithm.activity
+package com.dicoding.cryptographyalgorithm.appmenu.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent

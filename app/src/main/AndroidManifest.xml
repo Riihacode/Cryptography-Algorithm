@@ -13,25 +13,25 @@
         android:theme="@style/Theme.CryptographyAlgorithm"
         tools:targetApi="31">
         <activity
-            android:name=".activity.SuperActivity"
+            android:name=".appmenu.activity.SuperEncryptionActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".appmenu.activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.BlockActivity"
+            android:name=".appmenu.activity.AESActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.StreamActivity"
+            android:name=".appmenu.activity.RC4Activity"
             android:exported="false" />
         <activity
-            android:name=".activity.RailFenceActivity"
+            android:name=".appmenu.activity.RailFenceActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.CaesarActivity"
+            android:name=".appmenu.activity.CaesarActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SplashScreenActivity"
+            android:name=".appmenu.activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

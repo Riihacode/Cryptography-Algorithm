@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Cryptography Algorithm</string>
     <string name="app_name2">Cryptography</string>
-    <string name="masukkan_teks">Masukkan teks</string>
-    <string name="masukkan_shift">Masukkan Shift</string>
-    <string name="dekripsi">Dekripsi</string>
-    <string name="hasil_enkripsi">Hasil Enkripsi:</string>
-    <string name="enkripsi">Enkripsi</string>
-    <string name="hasil_dekripsi">Hasil Dekripsi:</string>
+    <string name="input_text">Input Text</string>
+    <string name="input_shift">Input Shift</string>
+    <string name="decrypt">Decrypt</string>
+    <string name="encryption_result">Encryption Result:</string>
+    <string name="encrypt">Encrypt</string>
+    <string name="decryption_result">Decryption Result:</string>
     <string name="rail_fence_algorithm">Rail Fence Algorithm</string>
-    <string name="masukkan_key">Masukkan Key</string>
+    <string name="input_key">Input Key</string>
     <string name="invalid_input"><![CDATA[Invalid input. Ensure text is not empty, rails > 1.]]></string>
     <string name="invalid_input_key"><![CDATA[Invalid key input. Ensure the key is not 0 or 1 and not more than 2.147.483.647 (int data type). Key recommendation is under 100 due to memory limit.]]></string>
     <string name="show_decrypted_text">Show Decrypted Text</string>
@@ -27,6 +27,8 @@
     <string name="out_of_memory_range">Out of memory range</string>
     <string name="text_cannot_be_empty">Text cannot be empty</string>
     <string name="key_cannot_be_empty">Key cannot be empty</string>
+    <string name="text_and_key_cannot_be_empty"><![CDATA[Text & Key can\'t be empty.]]></string>
+    <string name="key_cannot_be_more_than_214748367">Key can\'t be more than 2.147.483.647 (int data type length)</string>
 
     <string-array name="data_name">
         <item>Caesar Cipher</item>

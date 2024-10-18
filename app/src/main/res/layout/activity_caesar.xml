@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CaesarActivity">
+    tools:context=".appmenu.activity.CaesarActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +18,8 @@
             android:id="@+id/inputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/masukkan_teks"
-            android:autofillHints="@string/masukkan_teks"
+            android:hint="@string/input_text"
+            android:autofillHints="@string/input_text"
             android:inputType="textMultiLine"
             android:minLines="3"
             android:gravity="top"
@@ -32,8 +32,8 @@
             android:id="@+id/inputKey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="@string/masukkan_key"
-            android:hint="@string/masukkan_key"
+            android:autofillHints="@string/input_key"
+            android:hint="@string/input_key"
             android:inputType="number"
             android:padding="10dp"
             android:background="@drawable/edittext_background"
@@ -45,7 +45,7 @@
             android:id="@+id/encryptButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/enkripsi"
+            android:text="@string/encrypt"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/purple_500"
             android:textColor="@android:color/white"/>
@@ -55,7 +55,7 @@
             android:id="@+id/encryptedText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hasil_enkripsi"
+            android:hint="@string/encryption_result"
             android:textStyle="bold"
             android:padding="10dp"
             android:background="@drawable/textview_background"
@@ -67,7 +67,7 @@
             android:id="@+id/decryptButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dekripsi"
+            android:text="@string/decrypt"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/purple_500"
             android:textColor="@android:color/white"/>
@@ -77,7 +77,7 @@
             android:id="@+id/decryptedText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hasil_dekripsi"
+            android:hint="@string/decryption_result"
             android:textStyle="bold"
             android:padding="10dp"
             android:background="@drawable/textview_background"

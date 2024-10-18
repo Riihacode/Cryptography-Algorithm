@@ -1,9 +1,8 @@
-package com.dicoding.cryptographyalgorithm.activity
+package com.dicoding.cryptographyalgorithm.appmenu.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,9 +40,9 @@ class MainActivity : AppCompatActivity(), ListAlgorithmAdapter.OnItemClickCallba
         val intent = when (data.name) {
             "Caesar Cipher" -> Intent(this, CaesarActivity::class.java)
             "Rail Fence Cipher" -> Intent(this, RailFenceActivity::class.java)
-            "Stream Cipher (RC4)" -> Intent(this, StreamActivity::class.java)
-            "Block Cipher (AES)" -> Intent(this, BlockActivity::class.java)
-            "Super Enkripsi" -> Intent(this, SuperActivity::class.java)
+            "Stream Cipher (RC4)" -> Intent(this, RC4Activity::class.java)
+            "Block Cipher (AES)" -> Intent(this, AESActivity::class.java)
+            "Super Enkripsi" -> Intent(this, SuperEncryptionActivity::class.java)
             else -> null
         }
         intent?.let { startActivity(it) }
