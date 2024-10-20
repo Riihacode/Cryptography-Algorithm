@@ -32,11 +32,6 @@ class RC4Activity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                //val encryptedText = encryptRC4(plainText.toByteArray(), key.toByteArray())
-                //binding.encryptedText.text = encryptedText
-                // val encryptedText = RC4Algorithm.encryptRC4(plainText.toByteArray(Charsets.UTF_8), key.toByteArray(Charsets.UTF_8))
-                //binding.encryptedText.text = Base64.encodeToString(encryptedText, Base64.DEFAULT)
-                // Langsung memanggil encryptRC4
                 val encryptedText = RC4Algorithm.encryptRC4(plainText, key)
                 binding.encryptedText.text = encryptedText
             } catch (e: Exception){
@@ -59,11 +54,6 @@ class RC4Activity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                //  val decryptedText = decryptRC4(Base64.decode(cipherText, Base64.DEFAULT), key.toByteArray())
-                //binding.decryptedText.text = decryptedText
-                //val decryptedText = RC4Algorithm.decryptRC4(Base64.decode(cipherText, Base64.DEFAULT), key.toByteArray(Charsets.UTF_8))
-                //binding.decryptedText.text = String(decryptedText, Charsets.UTF_8)
-                // Langsung memanggil decryptRC4
                 val decryptedText = RC4Algorithm.decryptRC4(cipherText, key)
                 binding.decryptedText.text = decryptedText
             } catch (e: Exception) {

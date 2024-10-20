@@ -2,6 +2,7 @@ package com.dicoding.cryptographyalgorithm.appmenu.algorithm
 
 import android.annotation.SuppressLint
 import android.util.Base64
+import android.util.Log
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
@@ -16,7 +17,13 @@ object AESAlgorithm {
             else -> throw IllegalArgumentException("Key length must be 16, 24, or 32 bytes long.")
         }
 
-        return SecretKeySpec(validKey, "AES")
+        val secretKeySpec = SecretKeySpec(validKey, "AES")
+
+        // Log untuk menampilkan kunci dalam format heksadesimal
+        val keyHex = validKey.joinToString("") { String.format("%02x", it) }
+        Log.d("AESAlgorithm", "generateAESKeyFromString: Key (hex): $keyHex")
+
+        return secretKeySpec
     }
 
     @SuppressLint("GetInstance")
@@ -25,7 +32,10 @@ object AESAlgorithm {
         cipher.init(Cipher.ENCRYPT_MODE, secretKey)
         val encryptedBytes = cipher.doFinal(inputText.toByteArray(Charsets.UTF_8))
 
-        return Base64.encodeToString(encryptedBytes, Base64.DEFAULT)
+        val encryptAESResult = Base64.encodeToString(encryptedBytes, Base64.DEFAULT)
+        Log.d("AESAlgorithm", "encryptAESResult: $encryptAESResult")
+
+        return encryptAESResult
     }
 
     @SuppressLint("GetInstance")
@@ -35,6 +45,9 @@ object AESAlgorithm {
         val decodedBytes = Base64.decode(inputText, Base64.DEFAULT)
         val decryptedBytes = cipher.doFinal(decodedBytes)
 
-        return String(decryptedBytes, Charsets.UTF_8)
+        val decryptAESResult = String(decryptedBytes, Charsets.UTF_8)
+        Log.d("AESAlgorithm", "decryptAESResult: $decryptAESResult")
+
+        return decryptAESResult
     }
 }

@@ -22,7 +22,6 @@ class CaesarActivity : AppCompatActivity() {
             val inputKey = binding.inputKey.text.toString()
 
             if(inputKey.isEmpty() || text.isEmpty()){
-                //Toast.makeText(this, "Text & Key can't be empty", Toast.LENGTH_SHORT).show()
                 binding.encryptedText.text = getString(R.string.text_and_key_cannot_be_empty)
             } else {
                 if(isKeyValid(inputKey)){
@@ -30,7 +29,6 @@ class CaesarActivity : AppCompatActivity() {
                     val encrypted = CaesarAlgorithm.encryptCaesar(text, shift)
                     binding.encryptedText.text = encrypted
                 } else {
-                    //Toast.makeText(this, "Key can't be more than 2.147.483.647", Toast.LENGTH_SHORT).show()
                     binding.encryptedText.text = getString(R.string.key_cannot_be_more_than_214748367)
                 }
             }
@@ -40,7 +38,6 @@ class CaesarActivity : AppCompatActivity() {
             val text = binding.inputText.text.toString()
             val inputKey = binding.inputKey.text.toString()
             if (inputKey.isEmpty() || inputKey.isEmpty()){
-                //Toast.makeText(this, "Text & Key can't be empty", Toast.LENGTH_SHORT).show()
                 binding.decryptedText.text = getString(R.string.text_and_key_cannot_be_empty)
             } else {
                 if(isKeyValid(inputKey)){
