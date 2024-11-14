@@ -75,4 +75,3 @@ object RailFenceAlgorithm {
         return decryptedText.toString()               // mengembalikan teks yang telah didekripsi sebagai string
     }
 }
-

@@ -29,6 +29,11 @@
     <string name="key_cannot_be_empty">Key cannot be empty</string>
     <string name="text_and_key_cannot_be_empty"><![CDATA[Text & Key can\'t be empty.]]></string>
     <string name="key_cannot_be_more_than_214748367">Key can\'t be more than 2.147.483.647 (int data type length)</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera_x">Camera X</string>
+    <string name="camera">Camera\n</string>
+    <string name="result">Result</string>
+    <string name="empty_image_warning">Empty Image!</string>
 
     <string-array name="data_name">
         <item>Caesar Cipher</item>
@@ -36,6 +41,12 @@
         <item>Stream Cipher (RC4)</item>
         <item>Block Cipher (AES)</item>
         <item>Super Enkripsi</item>
+        <item>Steganography</item>
+        <item>Sign Up</item>
+        <item>Log In</item>
+        <item>File Encryption</item>
+        <item>File Test</item>
+        <item>Steganography Test</item>
 
     </string-array>
 
@@ -45,6 +56,12 @@
         <item>RC4 bekerja dengan menciptakan sebuah stream kunci pseudo-random yang kemudian di-XOR-kan (bitwise exclusive OR) dengan data yang akan dienkripsi atau didekripsi.</item>
         <item>AES adalah algoritma block cipher, yang artinya bekerja dengan membagi data ke dalam blok-blok yang berukuran tetap (128 bit untuk AES) dan kemudian mengenkripsi setiap blok secara terpisah.</item>
         <item>Super Enkripsi gabungan dari Caesar, Rail Fence, RC4, dan AES Cipher</item>
+        <item>Steganografi adalah seni dan ilmu menulis pesan tersembunyi atau menyembunyikan pesan dengan suatu cara sehingga selain si pengirim dan si penerima, tidak ada seorang pun yang mengetahui atau menyadari bahwa ada suatu pesan rahasia. </item>
+        <item>Sign Upioughhhhhhhhh</item>
+        <item>Log Inkjhygiouii</item>
+        <item>File Encryption</item>
+        <item>File Test</item>
+        <item>Steganography Test</item>
     </string-array>
 
     <array name="data_photo">
@@ -53,5 +70,11 @@
         <item>@drawable/stream_cipher_rc4</item>
         <item>@drawable/aes</item>
         <item>@drawable/super_enkripsi</item>
+        <item>@drawable/steganografi</item>
+        <item>@drawable/elgamal</item>
+        <item>@drawable/testing</item>
+        <item>@drawable/elgamal</item>
+        <item>@drawable/elgamal</item>
+        <item>@drawable/elgamal</item>
     </array>
 </resources>

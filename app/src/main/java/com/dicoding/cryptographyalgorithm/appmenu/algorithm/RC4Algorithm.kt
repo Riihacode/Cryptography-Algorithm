@@ -22,8 +22,7 @@ object RC4Algorithm {
             swap(s, i, j)
 
             // Log untuk melihat proses KSA
-            Log.d("RC4", "KSA - Iterasi $i: keyByte = ${(keyBytes[i % keyBytes.size].toInt() and 0xFF)}, j = $j, S[$i] = ${(s[i].toInt() and 0xFF)}, S[$j] = ${(s[j].toInt() and 0xFF)}")
-
+            // Log.d("RC4", "KSA - Iterasi $i: keyByte = ${(keyBytes[i % keyBytes.size].toInt() and 0xFF)}, j = $j, S[$i] = ${(s[i].toInt() and 0xFF)}, S[$j] = ${(s[j].toInt() and 0xFF)}")
         }
 
         // Enkripsi & Dekripsi
@@ -37,6 +36,7 @@ object RC4Algorithm {
             swap(s, i, j)
 
             val index = (s[i] + s[j]).toInt() and 0xFF
+            Log.d("index","index = ${(s[i] + s[j]).toInt() and 0xFF}") // WORK
             output[k] = (inputBytes[k].toInt() xor s[index].toInt()).toByte()
 
             // Log untuk melihat proses PRGA dan hasil XOR
@@ -72,7 +72,7 @@ object RC4Algorithm {
             swap(s, i, j)
 
             // Log untuk melihat proses KSA, termasuk nilai keyBytes[i % keyBytes.size]
-            Log.d("RC4", "KSA - Iterasi $i: j = $j, S[$i] = ${(s[i].toInt() and 0xFF)}, S[$j] = ${(s[j].toInt() and 0xFF)}, keyByte = ${(keyBytes[i % keyBytes.size].toInt() and 0xFF)}")
+            //Log.d("RC4", "KSA - Iterasi $i: j = $j, S[$i] = ${(s[i].toInt() and 0xFF)}, S[$j] = ${(s[j].toInt() and 0xFF)}, keyByte = ${(keyBytes[i % keyBytes.size].toInt() and 0xFF)}")
         }
 
         // Enkripsi & Dekripsi (karena RC4 simetris, logika enkripsi sama dengan dekripsi)
@@ -82,10 +82,13 @@ object RC4Algorithm {
 
         for (k in inputBytes.indices) {
             i = (i + 1) and 0xFF
+            Log.d("j", "j = ${j and 0xFF}")
+            Log.d("i", "i = ${i and 0xFF}")
             j = (j + s[i].toInt()) and 0xFF
             swap(s, i, j)
 
             val index = (s[i] + s[j]).toInt() and 0xFF
+            Log.d("index","index = ${(s[i] + s[j]).toInt() and 0xFF}") // WORK
             output[k] = (inputBytes[k].toInt() xor s[index].toInt()).toByte()
 
             // Log untuk melihat setiap byte dalam PRGA
@@ -107,6 +110,7 @@ object RC4Algorithm {
 
     private fun swap(s: ByteArray, i: Int, j: Int) {
         val temp = s[i]
+        Log.d("RC4", "Swapping: S[i] = S[$i] = ${(s[i].toInt() and 0xFF)}, S[j] = S[$j] = ${(s[j].toInt() and 0xFF)}, temp = ${(temp.toInt() and 0xFF)}")
         s[i] = s[j]
         s[j] = temp
     }

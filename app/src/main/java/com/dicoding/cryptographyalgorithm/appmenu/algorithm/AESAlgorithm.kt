@@ -19,7 +19,6 @@ object AESAlgorithm {
 
         val secretKeySpec = SecretKeySpec(validKey, "AES")
 
-        // Log untuk menampilkan kunci dalam format heksadesimal
         val keyHex = validKey.joinToString("") { String.format("%02x", it) }
         Log.d("AESAlgorithm", "generateAESKeyFromString: Key (hex): $keyHex")
 

@@ -38,11 +38,17 @@ class MainActivity : AppCompatActivity(), ListAlgorithmAdapter.OnItemClickCallba
         Log.d("MainActivity", "Data clicked: ${data.name}")
 
         val intent = when (data.name) {
-            "Caesar Cipher" -> Intent(this, CaesarActivity::class.java)
-            "Rail Fence Cipher" -> Intent(this, RailFenceActivity::class.java)
-            "Stream Cipher (RC4)" -> Intent(this, RC4Activity::class.java)
-            "Block Cipher (AES)" -> Intent(this, AESActivity::class.java)
-            "Super Enkripsi" -> Intent(this, SuperEncryptionActivity::class.java)
+            "Caesar Cipher"         -> Intent(this, CaesarActivity::class.java)
+            "Rail Fence Cipher"     -> Intent(this, RailFenceActivity::class.java)
+            "Stream Cipher (RC4)"   -> Intent(this, RC4Activity::class.java)
+            "Block Cipher (AES)"    -> Intent(this, AESActivity::class.java)
+            "Super Enkripsi"        -> Intent(this, SuperEncryptionActivity::class.java)
+            "Steganography"         -> Intent(this, SteganographyActivity::class.java)
+            "Sign Up"               -> Intent(this, SignupActivity::class.java)
+            "Log In"                -> Intent(this, LoginActivity::class.java)
+            "File Encryption"       -> Intent(this, FileEncryptionActivity::class.java)
+            "File Test"             -> Intent(this, AESFileTestActivity::class.java)
+            "Steganography Test"    -> Intent(this, SteganographyTestActivity::class.java)
             else -> null
         }
         intent?.let { startActivity(it) }

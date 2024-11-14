@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".appmenu.activity.FileEncryptionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Judul Aplikasi -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="File Encryption"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center" />
+
+        <!-- Input Key -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter encryption key"
+            android:layout_marginTop="16dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_key"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLength="32"
+                android:hint="16, 24, or 32 characters" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Tombol Pilih File -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_select_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select File"
+            android:drawableStart="@drawable/ic_file"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Teks File yang Dipilih -->
+        <TextView
+            android:id="@+id/tv_selected_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No file selected"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp" />
+
+        <!-- Tombol Enkripsi -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_encrypt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Encrypt File"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Tombol Dekripsi -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_decrypt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Decrypt File"
+            android:drawableStart="@drawable/ic_unlock"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Teks Status -->
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: Waiting"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</ScrollView>
