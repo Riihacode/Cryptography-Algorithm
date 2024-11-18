@@ -1,67 +1,95 @@
 package com.dicoding.cryptographyalgorithm.appmenu.activity
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.dicoding.cryptographyalgorithm.R
 import com.dicoding.cryptographyalgorithm.appmenu.algorithm.AESAlgorithm
 import com.dicoding.cryptographyalgorithm.databinding.ActivitySignupBinding
 import javax.crypto.SecretKey
 
 class SignupActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySignupBinding  // Binding class untuk layout
+    private lateinit var binding: ActivitySignupBinding
     private lateinit var sharedPreferences: SharedPreferences
     private val secretKey: SecretKey by lazy {
-        AESAlgorithm.generateAESKeyFromString("1234567890123456")  // Ganti dengan kunci yang Anda gunakan
+        AESAlgorithm.generateAESKeyFromString("1234567890123456")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Inisialisasi View Binding
         binding = ActivitySignupBinding.inflate(layoutInflater)
-        setContentView(binding.root)  // Menggunakan root view dari binding
+        setContentView(binding.root)
 
         sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
 
-        // Set click listener untuk tombol Sign Up
-        binding.btnSignUp.setOnClickListener {
-            val username = binding.edtUsername.text.toString()
-            val password = binding.edtPassword.text.toString()
+        binding.signupButton.setOnClickListener { handleSignup() }
+        binding.loginButtonInSignup.setOnClickListener { navigateToLogin() }
+    }
 
-            if (username.isNotEmpty() && password.isNotEmpty()) {
+    // Fungsi untuk menangani proses signup
+    private fun handleSignup() {
+        val username = binding.usernameSignupEditText.text.toString().trim()
+        val email = binding.emailSignupEditText.text.toString().trim()
+        val password = binding.passwordEditText.text.toString()
+        val confirmPassword = binding.passwordSignupEditTextConf.text.toString()
+
+        if (areFieldsValid(username, email, password, confirmPassword)) {
+            if (password == confirmPassword) {
                 if (isUsernameAvailable(username)) {
-                    // Mendaftarkan user dan menyimpan password terenkripsi
-                    registerUser(username, password)
+                    registerUser(username, email, password)
                 } else {
-                    Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show()
+                    showToast("Username already exists")
                 }
             } else {
-                Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show()
+                showToast("Passwords do not match")
             }
+        } else {
+            showToast("Please fill in all fields")
         }
     }
 
-    // Fungsi untuk memeriksa apakah username sudah ada di SharedPreferences
-    private fun isUsernameAvailable(username: String): Boolean {
-        return sharedPreferences.getString(username, null) == null
+    // Fungsi untuk memvalidasi input pengguna
+    private fun areFieldsValid(username: String, email: String, password: String, confirmPassword: String): Boolean {
+        return username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()
     }
 
-    // Fungsi untuk menyimpan data pengguna yang terdaftar
-    private fun registerUser(username: String, password: String) {
-        val encryptedPassword = AESAlgorithm.encryptAES(password, secretKey)
+    // Fungsi untuk mengecek ketersediaan username
+    private fun isUsernameAvailable(username: String): Boolean {
+        return sharedPreferences.getString("${username}_username", null) == null
+    }
 
-        // Menyimpan data dalam SharedPreferences
-        sharedPreferences.edit().putString(username, encryptedPassword).apply()
+    // Fungsi untuk mendaftarkan user baru
+    private fun registerUser(username: String, email: String, password: String) {
+        val encryptedPassword = encryptPassword(password)
 
-        Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
+        saveUserData(username, email, encryptedPassword)
+        showToast("Registration successful")
+        navigateToLogin()
+    }
 
-        // Bisa langsung menuju ke halaman login setelah registrasi
-        finish()  // Menutup halaman SignUp dan kembali ke halaman sebelumnya
+    // Fungsi untuk mengenkripsi password
+    private fun encryptPassword(password: String): String {
+        return AESAlgorithm.encryptAES(password, secretKey)
+    }
+
+    // Fungsi untuk menyimpan data pengguna ke SharedPreferences
+    private fun saveUserData(username: String, email: String, encryptedPassword: String) {
+        sharedPreferences.edit()
+            .putString("${email}_username", username)
+            .putString("${email}_password", encryptedPassword)
+            .apply()
+    }
+
+    // Fungsi untuk berpindah ke LoginActivity
+    private fun navigateToLogin() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
+
+    // Fungsi untuk menampilkan pesan toast
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

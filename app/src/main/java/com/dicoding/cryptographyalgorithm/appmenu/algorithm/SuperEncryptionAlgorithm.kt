@@ -46,10 +46,10 @@ object SuperEncryptionAlgorithm {
         val keyHex = (aesKey as SecretKeySpec).encoded.joinToString("") { String.format("%02x", it) }
         Log.d("SuperEncryption", "aesKey (hex) = $keyHex")
 
-        val rc4Encrypted = AESAlgorithm.decryptAES(encryptedText, aesKey)
-        Log.d("SuperEncryption", "rc4Encrypted = $rc4Encrypted")
+        val aesDecrypted = AESAlgorithm.decryptAES(encryptedText, aesKey)
+        Log.d("SuperEncryption", "aesDecrypted = $aesDecrypted")
 
-        val rc4Decrypted = RC4Algorithm.decryptRC4(rc4Encrypted, rc4Key)
+        val rc4Decrypted = RC4Algorithm.decryptRC4(aesDecrypted, rc4Key)
         Log.d("SuperEncryption", "rc4Decrypted = $rc4Decrypted")
 
         val railFenceDecrypted = RailFenceAlgorithm.decryptRailFence(rc4Decrypted, railFenceRails)

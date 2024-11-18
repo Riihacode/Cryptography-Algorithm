@@ -1,140 +1,217 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp"
+    android:layout_height="match_parent"
     tools:context=".appmenu.activity.SteganographyActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:padding="8dp">
 
-        <!-- Cover Image Preview in CardView -->
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="8dp">
+            android:orientation="vertical"
+            android:padding="4dp">
 
-            <ImageView
-                android:id="@+id/previewImageView"
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Steganography"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center" />
+
+            <!-- Title Cover Image -->
+            <TextView
+                android:id="@+id/tvCoverImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cover Image"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:paddingTop="16dp"/>
+
+            <!-- Cover Image Preview in CardView -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:contentDescription="Cover Image Preview"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_place_holder" />
+                android:layout_marginBottom="16dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="8dp"
+                android:layout_margin="3dp">
 
-            <!-- Progress Indicator overlay -->
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/progressIndicator"
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_gravity="top"
-                android:indeterminate="true"
-                android:visibility="gone" />
-        </com.google.android.material.card.MaterialCardView>
+                <ImageView
+                    android:id="@+id/previewImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Cover Image Preview"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_place_holder" />
+            </com.google.android.material.card.MaterialCardView>
 
-        <!-- Action Buttons in Grid -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/galleryButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/gallery"
-                app:layout_constraintWidth_percent="0.32"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/cameraButton" />
-
-            <Button
-                android:id="@+id/cameraButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/camera"
-                app:layout_constraintWidth_percent="0.32"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/galleryButton"
-                app:layout_constraintEnd_toStartOf="@id/cameraXButton" />
-
-            <Button
-                android:id="@+id/cameraXButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/camera_x"
-                app:layout_constraintWidth_percent="0.32"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Secret Image Button -->
-        <Button
-            android:id="@+id/chooseSecretButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Choose Secret Image" />
-
-        <!-- Secret Image Preview -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="8dp">
-
-            <ImageView
-                android:id="@+id/secretImageView"
+            <!-- Action Buttons (Gallery and Camera) in Horizontal Layout -->
+            <!-- Action Buttons (Gallery and Camera) in Horizontal Layout -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:contentDescription="Secret Image Preview"
-                android:scaleType="fitCenter" />
-        </com.google.android.material.card.MaterialCardView>
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                >
 
-        <!-- Embed and Decode Buttons -->
-        <Button
-            android:id="@+id/embedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Embed Image" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/galleryButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/gallery"
+                    android:layout_marginEnd="8dp"
+                    android:maxHeight="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp" />
 
-        <Button
-            android:id="@+id/decodeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Decode Image" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cameraButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/camera"
+                    android:layout_marginStart="8dp"
+                    android:maxHeight="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Result : "
-        />
-        <!-- Decoded Image Preview -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="8dp">
 
-            <ImageView
-                android:id="@+id/resultImageView"
+            <!-- Secret Image Section -->
+            <TextView
+                android:id="@+id/tvSecretImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="Decoded Image Preview"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
-        </com.google.android.material.card.MaterialCardView>
+                android:text="Secret Image"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:paddingTop="16dp"/>
 
-    </LinearLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/chooseSecretButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose Secret Image"
+                android:layout_marginBottom="16dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="8dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/secretImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Secret Image Preview"
+                    android:scaleType="fitCenter" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Encode/Decode Section -->
+            <TextView
+                android:id="@+id/tvEncodeDecode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Encode/Decode"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:paddingTop="16dp"/>
+
+            <Button
+                android:id="@+id/embedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Embed Image"
+                 />
+
+            <Button
+                android:id="@+id/decodeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Decode Image"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/statusEmbedDecode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status: Idle"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Result Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:paddingTop="16dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="8dp">
+
+                <ImageView
+                    android:id="@+id/resultImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Decoded Image Preview"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/saveEmbeddedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Embedded Image"/>
+
+            <Button
+                android:id="@+id/saveDecodedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Decoded Image"
+                android:layout_marginBottom="4dp"/>
+
+            <!-- TextView untuk status proses penyimpanan -->
+            <TextView
+                android:id="@+id/statusSaving"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status: Idle"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- ProgressBar untuk menunjukkan proses sedang berlangsung -->
+
+
+        </LinearLayout>
+    </ScrollView>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+</FrameLayout>

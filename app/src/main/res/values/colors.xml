@@ -7,4 +7,15 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
+    <color name="lavender">#8692f7</color>
+    <color name="pink_500">#D81B60</color>
+    <color name="pink_200">#FF8FAF</color>
+    <color name="pink_custom">#F06071</color>
+
+    <color name="background_light">#F0F0F0</color>
+    <color name="ripple_effect">#80CBC4</color>
+    <color name="bottom_nav_icon_active">#6200EE</color>
+    <color name="bottom_nav_icon_inactive">#757575</color>
+
 </resources>

@@ -9,7 +9,6 @@ import android.provider.OpenableColumns
 import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.cryptographyalgorithm.R
 import com.dicoding.cryptographyalgorithm.appmenu.algorithm.AESFileEncryption
 import com.dicoding.cryptographyalgorithm.databinding.ActivityFileEncryptionBinding
 import javax.crypto.SecretKey
@@ -113,7 +112,6 @@ class FileEncryptionActivity : AppCompatActivity() {
         startActivityForResult(intent, 300)
     }
 
-
     @SuppressLint("SetTextI18n")
     @Deprecated("This method has been deprecated in favor of using the Activity Result API\n      which brings increased type safety via an {@link ActivityResultContract} and the prebuilt\n      contracts for common intents available in\n      {@link androidx.activity.result.contract.ActivityResultContracts}, provides hooks for\n      testing, and allow receiving results in separate, testable classes independent from your\n      activity. Use\n      {@link #registerForActivityResult(ActivityResultContract, ActivityResultCallback)}\n      with the appropriate {@link ActivityResultContract} and handling the result in the\n      {@link ActivityResultCallback#onActivityResult(Object) callback}.")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -123,7 +121,6 @@ class FileEncryptionActivity : AppCompatActivity() {
             when (requestCode) {
                 100 -> {
                     selectedFileUri = uri
-                    //val fileName = uri?.lastPathSegment ?: "Unknown file"
                     val fileName = getFileName(uri)
                     binding.tvSelectedImage.text = "Selected file: $fileName"
 
@@ -198,6 +195,7 @@ class FileEncryptionActivity : AppCompatActivity() {
 
         return fileName
     }
+
     private fun getFileExtension(uri: Uri?): String {
         return uri?.let {
             val mimeType = contentResolver.getType(it)
@@ -208,6 +206,7 @@ class FileEncryptionActivity : AppCompatActivity() {
     private fun encryptFile() {
         val secretKey = getKeyFromInput() ?: return
         if (selectedFileUri == null) {
+            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
             updateStatus("Encryption failed: No file selected.")
             return

@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.cryptographyalgorithm.R
 import com.dicoding.cryptographyalgorithm.appmenu.algorithm.SuperEncryptionAlgorithm
-//import com.dicoding.cryptographyalgorithm.appmenu.algorithm.SuperEncryptionAlgorithm
 import com.dicoding.cryptographyalgorithm.databinding.ActivitySuperEncryptionBinding
 
 class SuperEncryptionActivity : AppCompatActivity() {

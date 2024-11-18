@@ -6,7 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="6dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    app:cardElevation="4dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,6 +34,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:textSize="16sp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nunito_extrabold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_item_photo"
@@ -45,6 +48,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/img_item_photo"
             app:layout_constraintEnd_toEndOf="@id/tv_item_name"
             app:layout_constraintStart_toStartOf="@id/tv_item_name"

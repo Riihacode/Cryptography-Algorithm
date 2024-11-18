@@ -2,67 +2,55 @@ package com.dicoding.cryptographyalgorithm.appmenu.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.cryptographyalgorithm.R
-import com.dicoding.cryptographyalgorithm.adapter.ListAlgorithmAdapter
-import com.dicoding.cryptographyalgorithm.data_class.CryptoData
 import com.dicoding.cryptographyalgorithm.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), ListAlgorithmAdapter.OnItemClickCallback {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var rvAlgorithm: RecyclerView
-    private val list = ArrayList<CryptoData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupRecyclerView()
-        setupData()
-    }
-
-    private fun setupRecyclerView() {
-        rvAlgorithm = binding.rvAlgorithm
-        rvAlgorithm.layoutManager = LinearLayoutManager(this)
-        val adapter = ListAlgorithmAdapter(list)
-        adapter.setOnItemClickCallback(this)
-        rvAlgorithm.adapter = adapter
-    }
-
-    override fun onItemClicked(data: CryptoData) {
-        Log.d("MainActivity", "Data clicked: ${data.name}")
-
-        val intent = when (data.name) {
-            "Caesar Cipher"         -> Intent(this, CaesarActivity::class.java)
-            "Rail Fence Cipher"     -> Intent(this, RailFenceActivity::class.java)
-            "Stream Cipher (RC4)"   -> Intent(this, RC4Activity::class.java)
-            "Block Cipher (AES)"    -> Intent(this, AESActivity::class.java)
-            "Super Enkripsi"        -> Intent(this, SuperEncryptionActivity::class.java)
-            "Steganography"         -> Intent(this, SteganographyActivity::class.java)
-            "Sign Up"               -> Intent(this, SignupActivity::class.java)
-            "Log In"                -> Intent(this, LoginActivity::class.java)
-            "File Encryption"       -> Intent(this, FileEncryptionActivity::class.java)
-            "File Test"             -> Intent(this, AESFileTestActivity::class.java)
-            "Steganography Test"    -> Intent(this, SteganographyTestActivity::class.java)
-            else -> null
+        // Set default fragment (HomeFragment) when activity starts
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, HomeFragment()) // Show HomeFragment first
+                .commit()
         }
-        intent?.let { startActivity(it) }
+
+        // Set up BottomNavigationView item selection listener
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    // Show HomeFragment
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, HomeFragment())
+                        .commit()
+                    true
+                }
+                R.id.nav_account -> {
+                    // Show AccountFragment
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, AccountFragment())
+                        .commit()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
-    private fun setupData() {
-        val names = resources.getStringArray(R.array.data_name)
-        val descriptions = resources.getStringArray(R.array.data_description)
-        val typedArray = resources.obtainTypedArray(R.array.data_photo)
-
-        for (i in names.indices) {
-            val photoId = typedArray.getResourceId(i, -1)
-            list.add(CryptoData(names[i], descriptions[i], photoId))
+    override fun onStart() {
+        super.onStart()
+        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
+        if (!isLoggedIn) {
+            // If not logged in, direct to LoginActivity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
-        typedArray.recycle() // Jangan lupa untuk membebaskan TypedArray
     }
 }

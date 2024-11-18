@@ -55,7 +55,3 @@ object AESFileEncryption {
         return decryptDataResult
     }
 }
-
-
-
-

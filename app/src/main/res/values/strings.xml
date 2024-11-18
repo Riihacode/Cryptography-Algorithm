@@ -16,7 +16,7 @@
     <string name="block_cipher_algorithm">Block Cipher Algorithm</string>
     <string name="caesar_cipher_algorithm">Caesar Cipher Algorithm</string>
     <string name="stream_cipher_algorithm">Stream Cipher Algorithm</string>
-    <string name="powered_by">Powered by Kelompok 9</string>
+    <string name="powered_by">Powered by Ribhan Aulia Zulmi</string>
     <string name="splash_screen_section">Splash Screen</string>
     <string name="welcome">Welcome</string>
     <string name="algorithm_name">Algorithm Name</string>
@@ -34,6 +34,28 @@
     <string name="camera">Camera\n</string>
     <string name="result">Result</string>
     <string name="empty_image_warning">Empty Image!</string>
+    <string name="title_login_page">Login Page</string>
+    <string name="input_your_email">Input Your Email</string>
+    <string name="input_your_password">Input Your Password</string>
+    <string name="signin">Sign In</string>
+    <string name="signup_page_image">Signup Page Image</string>
+    <string name="signup_page">Sign Up Page</string>
+    <string name="input_your_username">Input Your Username</string>
+    <string name="confirm_your_password">Confirm Your Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="dont_have_account">Dont have an account? </string>
+    <string name="login_button">Log in</string>
+    <string name="image_login">image Login</string>
+    <string name="or">Or</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="logout">Log Out</string>
+    <string name="login">Log In</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="account">Account</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="edit_icon">Edit Icon</string>
 
     <string-array name="data_name">
         <item>Caesar Cipher</item>
@@ -42,12 +64,8 @@
         <item>Block Cipher (AES)</item>
         <item>Super Enkripsi</item>
         <item>Steganography</item>
-        <item>Sign Up</item>
-        <item>Log In</item>
         <item>File Encryption</item>
-        <item>File Test</item>
         <item>Steganography Test</item>
-
     </string-array>
 
     <string-array name="data_description">
@@ -57,10 +75,7 @@
         <item>AES adalah algoritma block cipher, yang artinya bekerja dengan membagi data ke dalam blok-blok yang berukuran tetap (128 bit untuk AES) dan kemudian mengenkripsi setiap blok secara terpisah.</item>
         <item>Super Enkripsi gabungan dari Caesar, Rail Fence, RC4, dan AES Cipher</item>
         <item>Steganografi adalah seni dan ilmu menulis pesan tersembunyi atau menyembunyikan pesan dengan suatu cara sehingga selain si pengirim dan si penerima, tidak ada seorang pun yang mengetahui atau menyadari bahwa ada suatu pesan rahasia. </item>
-        <item>Sign Upioughhhhhhhhh</item>
-        <item>Log Inkjhygiouii</item>
-        <item>File Encryption</item>
-        <item>File Test</item>
+        <item>File Encryption dengan AES algorithm</item>
         <item>Steganography Test</item>
     </string-array>
 
@@ -71,10 +86,9 @@
         <item>@drawable/aes</item>
         <item>@drawable/super_enkripsi</item>
         <item>@drawable/steganografi</item>
-        <item>@drawable/elgamal</item>
-        <item>@drawable/testing</item>
-        <item>@drawable/elgamal</item>
-        <item>@drawable/elgamal</item>
+        <item>@drawable/file_png_image</item>
         <item>@drawable/elgamal</item>
     </array>
+
+
 </resources>
